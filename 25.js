@@ -5,6 +5,7 @@ const millisecondsOfDay = parse('1970-01-02')
 const birthday = {
   year: 1995,
   monthIndex: 10,
+  day: 7,
   hours: 8,
   minutes: 22,
 }
