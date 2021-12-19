@@ -56,3 +56,58 @@ const me = new Hem(3.5)
 me.age = 23
 console.log(me)
 //#endregion
+
+// 0. using closure to log how many times a function is called
+let sum = (...args) => args.reduce((acc, num) => acc + num)
+
+const callCounter = (fn) => {
+  let count = 0
+
+  return (...args) => {
+    // write to logs, console, db, etc
+    console.log(`sum has been called ${count += 1} times`)
+    return fn(...args)
+  }
+}
+
+sum = callCounter(sum)
+
+// 1. check for valid data and number of params
+let rectangleArea = (length, width) => length * width
+
+const countParams = (fn) => (...params) => 
+  params.length !== fn.length
+    ? (() => { throw new Error(`Incorrect number of parameters`) })()
+    : fn(...params)
+
+const requireIntegers = (fn) => (...params) => {
+  params.forEach(param => !Number.isInteger(param) && (() => { throw new TypeError(`Params must be integers`) })())
+
+  return fn(...params)
+}
+
+rectangleArea = requireIntegers(countParams(rectangleArea))
+
+rectangleArea(20, 30)
+
+function getBody (fn) {
+  const entire = fn.toString();
+  
+  return entire.substring(entire.indexOf("{") + 1, entire.lastIndexOf("}"));
+}
+
+// decorate async api call
+let requestData = async (url) => {
+  try {
+    return await (await fetch(url)).json()
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+const dataResponseTime = (fn) => async (url) => {
+  console.time('api')
+  const data = await fn(url)
+  console.timeEnd('api')
+  return data
+}
