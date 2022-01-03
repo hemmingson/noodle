@@ -1,0 +1,8 @@
+{
+  "name": "cli",
+  "description": "",
+  "main": "./bin/index.js",
+  "bin": {
+    "log": "./bin/index.js"
+  }
+}
