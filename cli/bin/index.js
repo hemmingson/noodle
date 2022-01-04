@@ -1,3 +1,3 @@
 #!/usr/bin/env node
 
-console.log('cli start 🪜 ...')
+console.log('🪜 cli starting...')
