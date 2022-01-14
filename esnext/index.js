@@ -46,3 +46,5 @@ Array.prototype.findLast = function(callback) {
   }
   return -1
 }
+
+// ? array buffer
