@@ -16,5 +16,5 @@
     ctx.strokeText('五条 悟', 35, 35)
   })()
 
-  const getBase64 = (() => console.table({ base64: document.querySelector('canvas').toDataURL().replace(/^data:image\/(png|jpg);base64,/, "") }))()
+  const getBase64 = (() => console.table([{ base64: document.querySelector('canvas').toDataURL().replace(/^data:image\/(png|jpg);base64,/, "") }]))()
 </script>
