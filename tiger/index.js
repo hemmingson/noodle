@@ -3,7 +3,7 @@ console.log('🐅 year')
 // enum
 const $ = Object.freeze({
   Remix: 0,
-  Threejs: 1,
+  'Three.js': 1,
   Rust: 2
 })
 
@@ -36,7 +36,7 @@ hem
 
 hem = {
   age: 26,
-  lang: 'JavaScript'
+  lang: 'Rust'
 }
 let age, lang
 ({ age, lang } = hem)
