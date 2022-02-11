@@ -35,6 +35,27 @@
       background-color: #25baff;
       transition: width 200ms;
     }
+
+    .resizable {
+      min-width: 100px;
+      min-height: 100px;
+      max-width: 200px;
+      max-height: 200px;
+      overflow: auto;
+      resize: both;
+      background-color: #eee;
+    }
+
+    .has-dropcaps::first-letter {
+      font-size: 3rem;
+      float: left;
+      margin-right: 10px;
+    }
+
+    .has-dropcaps {
+      font-family: monospace;
+      max-width: 300px;
+    }
   </style>
 </head>
 <body>
@@ -45,6 +66,14 @@
         <div style="width: 100%;"></div>
       </div>
     </div>
+  </section>
+
+  <section>
+    <div class="resizable"></div>
+  </section>
+
+  <section>
+    <p class="has-dropcaps">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, asperiores. Explicabo est, eos ipsam, aperiam repellendus delectus aliquid recusandae distinctio perferendis numquam, pariatur rem? Eos neque consequatur ex maxime. Quod?</p>
   </section>
 
   <script>
