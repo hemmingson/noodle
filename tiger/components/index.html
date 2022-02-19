@@ -7,6 +7,11 @@
   <title>🌱</title>
 
   <style>
+    @font-face {
+      font-family: azuki;
+      src: url('./azuki.woff2');
+    }
+
     body {
       margin: 0;
       height: 100vh;
@@ -43,25 +48,26 @@
       max-height: 200px;
       overflow: auto;
       resize: both;
-      background-color: #eee;
       display: grid;
       place-content: center;
-      font-size: 2rem;
+      font-size: 1.5rem;
+      font-family: azuki;
       background-color: #85FFBD;
-      background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
+      background-image: linear-gradient(330deg, hsl(272,53%,50%) 0%, hsl(226,68%,56%) 100%);
+      color: gold;
       border-radius: 5px;
       box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     }
 
     .has-dropcaps::first-letter {
-      font-size: 3rem;
+      font-size: 1.5rem;
       float: left;
       margin-right: 10px;
     }
 
     .has-dropcaps {
-      font-family: monospace;
-      max-width: 300px;
+      font-family: azuki;
+      max-width: 280px;
     }
   </style>
 </head>
@@ -76,7 +82,7 @@
   </section>
 
   <section>
-    <div class="resizable">🐅</div>
+    <div class="resizable">金</div>
   </section>
 
   <section>
