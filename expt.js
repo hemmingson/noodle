@@ -26,3 +26,9 @@ class GoldDay extends Day {
 }
 
 new GoldDay().print()
+
+const q = 
+  new Proxy(
+    new URLSearchParams(search), 
+    { get: (params, prop) => params.get(prop) }
+  )
