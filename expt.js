@@ -1,5 +1,3 @@
-'use strict'
-
 const emptyArray = [null, undefined, false, 0, 0n, NaN, "", '', ``].filter(Boolean)
 
 // (??) is a special case of (||)
@@ -32,3 +30,5 @@ const q =
     new URLSearchParams(search), 
     { get: (params, prop) => params.get(prop) }
   )
+
+$=_=>$>_ // `${$}`
