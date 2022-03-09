@@ -221,3 +221,65 @@ function reverse<T>(items: T[]): T[] {
   return items.reverse()
 }
 reverse<number>([1, 2, 3])
+
+interface ButtonProps { size: 'md' | 'sm' }
+const Button: React.FC<ButtonProps> // ? type PropsWithChildren<T> = T & { children?: ReactNode }
+  = props => <button>{props.children}</button>
+
+interface Result<T> {
+  code: number,
+  message: string,
+  result: T
+}
+function fetchData(): Promise<Result<number>> {
+  return get('/api/demo/number')
+}
+const { result } = await fetchData() // number
+// * axios.get<T, Result>(url)
+
+// ? pure n | s extends -> ===, obj -> narrow type
+type result1 = 'a' extends 'abc' ? true : false // false
+type result2 = 123 extends 1 ? true : false // false
+type result3 = { a: true, b: false } extends { a: true } ? true : false // true
+
+type ParamType<T> = T extends (...args: infer P) => any ? P : T
+interface User {
+  name: string;
+  age: number;
+}
+type GetAge = (user: User) => void
+const getAge: GetAge = (user) => {}
+type A = ParamType<GetAge> // User
+type B = ParamType<string> // string
+
+// * Basic Generics Utilities
+type User1 = { name: string }
+type partialUser = Partial<User1> // => { name?: string }
+
+type User2 = { name?: string }
+type requiredUser = Required<User2> // => { name: string }
+
+interface CatInfo {
+  age: number;
+  breed: string;
+}
+type CatName = 'miffy' | 'bob'
+type CatMap = Record<CatName, CatInfo> // => { miffy: CatInfo, bob: CatInfo }
+
+type Todo = { title: string, description: string, completed: boolean }
+type TodoPreview = Pick<Todo, 'title' | 'completed'> // => { title: string, completed: boolean }
+type TodoInfo = Omit<Todo, 'title' | 'completed'> // => { description: string }
+
+type T0 = Exclude<'a' | 'b' | 'c', 'a'> // => 'b' | 'c'
+type T1 = Extract<'a' | 'b' | 'c', 'a'> // => 'a'
+
+type SumFunc = (a: number, b: number) => number
+const sum: SumFunc = (a, b) => a + b
+type T2 = Parameters<SumFunc> // => [a: number, b: number]
+type T4 = ReturnType<typeof sum> // => number
+{
+  class A {
+    constructor(a: number, b: number) {}
+  }
+  type T3 = ConstructorParameters<typeof A> // => [a: number, b:number]
+}
